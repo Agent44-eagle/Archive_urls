@@ -16,8 +16,8 @@
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/AGENT44/katana.git
-   cd katana
+   git clone https://github.com/Agent44-eagle/Archive_urls.git
+   cd Archive_urls
    
 2. Install required packages:
    pip install -r requirements.txt
