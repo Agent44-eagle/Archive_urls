@@ -84,7 +84,7 @@ def main():
         print(Fore.GREEN + "!7!................:~::.................................:^~7~.....:~!~:......^!~:..!!~.......................................................................................!~^:")
         
         print(Fore.CYAN + "\n" + "="*100)
-        print(Fore.CYAN + "                    URL COLLECTOR TOOL - GATHERING LIVE LINKS / Created by AGENT44 
+        print(Fore.CYAN + "                    URL COLLECTOR TOOL - GATHERING LIVE LINKS / Created by AGENT44 ") 
         print(Fore.CYAN + "="*100 + "\n")
         print("welcome to my toll  have a good day ")
         domain = input("[+] Enter your domain or subdomain: ").strip()
