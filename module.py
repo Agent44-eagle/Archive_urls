@@ -3,6 +3,7 @@ import json
 import time
 from typing import List
 from colorama import init, Fore, Back, Style
+from tqdm import tqdm 
 int()
 def wayback_urls(domain: str) -> List[str]:
     urls = []
@@ -73,9 +74,11 @@ def otx(domain: str, api_key: str) -> List[str]:
         print(Fore.RED +"Error api Alienvault ! " + Style.RESET_ALL, e)
         return []
 
+from tqdm import tqdm
+import concurrent.futures
+import requests
+
 def get_live_urls_fast(urls_list: List[str], max_workers: int = 10) -> List[str]:
-    
-    import concurrent.futures
     live_urls = []
     
     def check_url_live(url: str) -> tuple:
@@ -84,11 +87,14 @@ def get_live_urls_fast(urls_list: List[str], max_workers: int = 10) -> List[str]
             return (url, response.status_code == 200)
         except:
             return (url, False)
-    
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_url = {executor.submit(check_url_live, url): url for url in urls_list}
         
-        for future in concurrent.futures.as_completed(future_to_url):
+        for future in tqdm(concurrent.futures.as_completed(future_to_url),
+                           total=len(future_to_url),
+                           desc="Checking live URLs",
+                           colour="green"):
             url, is_live = future.result()
             if is_live:
                 live_urls.append(url)
