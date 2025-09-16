@@ -78,7 +78,7 @@ from tqdm import tqdm
 import concurrent.futures
 import requests
 
-def get_live_urls_fast(urls_list: List[str], max_workers: int = 10) -> List[str]:
+def get_live_urls_fast(urls_list: List[str], max_workers: int =50) -> List[str]:
     live_urls = []
     
     def check_url_live(url: str) -> tuple:
